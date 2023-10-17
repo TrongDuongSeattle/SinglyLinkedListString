@@ -1,12 +1,29 @@
-#ifndef SLLSTRING_H
-#define SLLSTRING_H
-
 #include <iostream>
 #include <string>
+#include "SLLString.h"
 
-class SLLString
-{
-    SLLString();
+SLLString::SLLString(){
+    m_pHead = NULL;
+    m_pTail = NULL;
+}
+/**
+ * Copy Constructor
+ * @param other
+ */
+SLLString::SLLString(const std::string& other) {
+    size = other.length();
+}
+/**
+ *
+ * @param other
+ */
+SLLString::SLLString(const SLLString& other){
+    this->m_pHead = other.m_pHead;
+    this->m_pTail = other.m_pTail
+}
+~SLLString();
+
+    /*
     SLLString(const std::string& other);
     SLLString(const SLLString& other);
     ~SLLString();
@@ -34,3 +51,4 @@ private:
 };
 
 #endif
+*/
