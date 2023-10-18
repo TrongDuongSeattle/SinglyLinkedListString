@@ -5,7 +5,7 @@
 int main()
 {
 	SLLString str("Hello world!");
-	SLLString newStr = new SLLString;
+	SLLString* newStr = new SLLString;
 
 	newStr = str;
 	newStr += SLLString( "CS@BC" );

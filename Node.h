@@ -10,11 +10,13 @@ class Node {
 public:
 
 public:
+    Node(){}
     Node(char data) { m_data = data; }
     void setData(char data){  m_data = data; }
     char getData() { return m_data; }
-    void setPrevious(Node* next) { m_next = next; }
+    void setNext(Node* next) { m_next = next; }
     Node* getNext() { return m_next; } //
+
 private:
     char m_data;
     Node* m_next;

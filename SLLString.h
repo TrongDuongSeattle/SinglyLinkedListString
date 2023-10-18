@@ -30,6 +30,8 @@ class SLLString
     // iterate, erase
 	void erase(char c);
 
+    void insert(Node node);
+
 private:
 	Node* m_pHead;
 	Node* m_pTail;

@@ -12,6 +12,11 @@ SLLString::SLLString(){
  */
 SLLString::SLLString(const std::string& other) {
     size = other.length();
+    Node* temp = new Node();
+    for (int i = 0; i < size-1; i++) {
+       Node* temp = new Node(other[i]);
+       m_pTail->setNext(temp);
+    }
 }
 /**
  *
@@ -19,10 +24,20 @@ SLLString::SLLString(const std::string& other) {
  */
 SLLString::SLLString(const SLLString& other){
     this->m_pHead = other.m_pHead;
-    this->m_pTail = other.m_pTail
+    this->m_pTail = other.m_pTail;
+}
+/**
+ *
+ * @param node
+ */
+ /*
+void SLLString::insert(Node node) {
+    if (m_pHead == NULL) {
+        m_pHead = node;
+    }
 }
 ~SLLString();
-
+*/
     /*
     SLLString(const std::string& other);
     SLLString(const SLLString& other);
@@ -34,9 +49,6 @@ SLLString::SLLString(const SLLString& other){
 
     // Get character at index n
     char& operator[](const int n);
-
-    // Get the length of this string
-    int length();
 
     // Find the index of the first occurrence of substring in the current string.
     // Returns - 1 if not found
