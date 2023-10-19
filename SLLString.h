@@ -7,6 +7,7 @@
 
 class SLLString
 {
+    public:
 	SLLString();
 	SLLString(const std::string& other); //convertor
 	SLLString(const SLLString& other); //copy constr
@@ -14,7 +15,16 @@ class SLLString
 
 	SLLString& operator=(const SLLString& other); //shallow copy
 	SLLString& operator+= (const SLLString& other);
-	friend std::ostream& operator<<(std::ostream& os, const SLLString& other);
+	friend std::ostream& operator<<(std::ostream& os, const SLLString& other) {
+        int index = 0;
+        auto temp = other.m_pHead;
+        while (temp != 0) {
+            os << index << "\t" << temp->getData() << std::endl;
+            temp = temp->getNext();
+            index++;
+        }
+        return os;
+    };
 
 	// Get character at index n
 	char& operator[](const int n);

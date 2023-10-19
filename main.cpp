@@ -4,6 +4,7 @@
 
 int main()
 {
+    /*
 	SLLString str("Hello world!");
 	SLLString* newStr = new SLLString;
 
@@ -22,4 +23,9 @@ int main()
 
 	newStr.erase('C');
 	std::cout << newStr << std::endl;			// Heo Word! S@B
+     */
+    SLLString* str = new SLLString("DeezNawtz");
+    std::cout << *str << std::endl;
+    std::cout << "If you can read this, smoke" << std::endl;
+
 }
