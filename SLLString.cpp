@@ -3,21 +3,24 @@
 #include "SLLString.h"
 
 SLLString::SLLString(){
-    m_pHead = 0;
-    m_pTail = 0;
+    m_pHead = nullptr;
+    m_pTail = nullptr;
 }
 /**
  * Copy Constructor
  * @param other
  */
  //
-SLLString::SLLString(const std::string& other) {
+SLLString::SLLString(const std::string& other){
+
     size = other.length();
     Node* temp = new Node();
     m_pHead = m_pTail = temp; //We're constructing for the first time.
-    for (int i = 0; i < size - 1; i++) {
-       m_pTail->setNext(temp);
-       m_pTail = m_pTail->getNext();
+    for (int i = 0; i < size; i++) {
+        temp->setData(other[i]);
+        m_pTail->setNext(temp);
+        //std::cout << m_pTail->getData();
+        m_pTail = m_pTail->getNext();
     }
 }
 /**
