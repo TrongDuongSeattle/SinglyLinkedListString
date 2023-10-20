@@ -13,8 +13,8 @@ class SLLString
 	SLLString(const SLLString& other); //copy constr
 	~SLLString();
 
-	SLLString& operator=(const SLLString& other) { //return and adress
-        if (this != &other) {
+	SLLString& operator=(const SLLString& other); //return and adress
+        /*if (this != &other) {
             delete this;
             Node* temp = new Node();
             temp = m_pHead;
@@ -22,10 +22,11 @@ class SLLString
 
         }
         delete this;
+        */
 
-
-    } //shallow copy
+     //shallow copy
 	SLLString& operator+= (const SLLString& other);
+
 	friend std::ostream& operator<<(std::ostream& os, const SLLString& other) {
         int index = 0;
         Node* temp = other.m_pHead;
@@ -52,7 +53,7 @@ class SLLString
 	void erase(char c);
 
     //copy?
-
+    SLLString& copy(SLLString& str);
 
 
 

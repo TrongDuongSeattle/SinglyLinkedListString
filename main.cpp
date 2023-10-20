@@ -27,7 +27,11 @@ int main()
     SLLString str("DeezNawtz");
     SLLString* newStr = new SLLString();
     newStr = &str;
+    std::cout << newStr << std::endl;
+    std::cout << *newStr << std::endl;
+
     std::cout << str << std::endl;
+    std::cout << &str << std::endl;
     //std::cout << "If you can read this, smoke" << std::endl;
 
 }

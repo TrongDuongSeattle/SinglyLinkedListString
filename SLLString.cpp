@@ -36,7 +36,7 @@ SLLString::SLLString(const SLLString& other){
     else {
         //copying first node...
         m_pHead = new Node();
-        m_pHead->setNext(other->getNext());
+        m_pHead->setNext(otherHead->getNext());
 
         //copy remaining nodes
         Node* new_m_pHead = m_pHead; // last node pointer
@@ -57,9 +57,40 @@ SLLString::SLLString(const SLLString& other){
         }//end loop
         new_m_pHead->setNext(0);
         }
-    }
-
 }
+
+SLLString& SLLString::copy(SLLString &other) {
+    size = other.size;
+    Node* otherHead = other.m_pHead;
+    if (otherHead == 0)
+        m_pHead = 0;
+    else {
+        //copying first node...
+        m_pHead = new Node();
+        m_pHead->setNext(otherHead->getNext());
+
+        //copy remaining nodes
+        Node* new_m_pHead = m_pHead; // last node pointer
+        otherHead = otherHead->getNext(); // advancing pointer..
+        while (otherHead != 0) {
+            // get next item from original chain
+            char ch = otherHead->getData();
+
+            // create a new node containing the next item
+            Node *newNodePtr = new Node(ch);
+
+            // linke new node to end of new chain
+            new_m_pHead->setNext(newNodePtr);
+
+            // Advance ptrs
+            new_m_pHead = new_m_pHead->getNext();
+            otherHead = otherHead->getNext();
+        }//end loop
+        new_m_pHead->setNext(0);
+    }
+}
+
+
 /**
  * iterate list, delete, set head & tail to null
  * Destructor
@@ -73,9 +104,12 @@ SLLString::~SLLString() {
     }
     size = 0;
 }
+/*
 SLLString& operator=(const SLLString& other) {
-    return *this;
-}
+    //return *this;
+}*/
+
+
     /*
 
 
