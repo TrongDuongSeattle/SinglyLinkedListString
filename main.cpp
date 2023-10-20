@@ -25,13 +25,12 @@ int main()
 	std::cout << newStr << std::endl;			// Heo Word! S@B
      */
     SLLString str("DeezNawtz");
-    SLLString* newStr = new SLLString();
-    newStr = &str;
-    std::cout << newStr << std::endl;
-    std::cout << *newStr << std::endl;
+    SLLString newStr;
+    newStr = str;
 
-    std::cout << str << std::endl;
-    std::cout << &str << std::endl;
-    //std::cout << "If you can read this, smoke" << std::endl;
+    std::cout << "&str: " << &str << std::endl;
+    std::cout << "&newStr: " << &newStr << std::endl;
 
+    std::cout << "str: " << str << std::endl;
+    std::cout << "newStr: " << newStr << std::endl;
 }

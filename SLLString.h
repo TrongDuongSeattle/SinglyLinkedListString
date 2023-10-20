@@ -12,21 +12,59 @@ class SLLString
 	SLLString(const std::string& other); //convertor
 	SLLString(const SLLString& other); //copy constr
 	~SLLString();
+    /**
+     * thanks Nathaniel
+     * Assignment:
+     *  Base obj1(5); //calls Base class constructor
+     *  Base obj2; //calls Base class default constructor
+     *  obj2 = obj1; //calls assignment operator
+     *
+     *  Copy Constructor:
+     *  Base obj1(5);
+     *  Base obj2 = obj1; //calls copy constructor
+     *
+     * @param other
+     * @return
+     */
+	SLLString& operator=(const SLLString& other) { //return and adress
+        if (this == &other)
+            return *this; //return
+        clear();//this is the distinguishing line.
+        //
+        size = other.size;
+        Node* otherHead = other.m_pHead;
+        m_pHead = new Node(otherHead->getData()); //creating first node.
+        m_pHead->setNext(otherHead->getNext()); //this is the head, mess with this and lose everything
 
-	SLLString& operator=(const SLLString& other); //return and adress
-        /*if (this != &other) {
-            delete this;
-            Node* temp = new Node();
-            temp = m_pHead;
+        //copy remaining nodes
+        Node* new_m_pHead = m_pHead; // temp pointer
+        otherHead = otherHead->getNext(); // advancing pointer..
+        while (otherHead != nullptr) {
+            // get next item from original chain
+            char ch = otherHead->getData();
 
+            // create a new node containing the next item
+            Node *newNodePtr = new Node(ch);
 
+            // link new node to end of new chain
+            new_m_pHead->setNext(newNodePtr);
+
+            // Advance ptrs
+            new_m_pHead = new_m_pHead->getNext();
+            otherHead = otherHead->getNext();
         }
-        delete this;
-        */
+        return *this;
 
-     //shallow copy
-	SLLString& operator+= (const SLLString& other);
-
+    }
+    /**
+     * string concat
+     * get to the end, stick it on.
+     * @param other
+     * @return
+     */
+	SLLString& operator+= (const SLLString& other){
+        m_pTail =
+    }
 	friend std::ostream& operator<<(std::ostream& os, const SLLString& other) {
         int index = 0;
         Node* temp = other.m_pHead;
@@ -52,8 +90,9 @@ class SLLString
     // iterate, erase
 	void erase(char c);
 
-    //copy?
-    SLLString& copy(SLLString& str);
+    Node* copy();
+    void clear();
+
 
 
 
