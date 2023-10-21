@@ -61,7 +61,7 @@ class SLLString
      * get to the end, stick it on.
      * @param other
      * @return
-     */
+     *//*
 	SLLString& operator+= (const SLLString& other) {
         SLLString* list = new SLLString();
         SLLString lhs = *this;
@@ -73,9 +73,7 @@ class SLLString
         list->size = this->size + other.size;
 
         return *list;
-
-
-    }
+    }*/
 	friend std::ostream& operator<<(std::ostream& os, const SLLString& other) {
         int index = 0;
         Node* temp = other.m_pHead;
