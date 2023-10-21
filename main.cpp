@@ -6,10 +6,10 @@ int main()
 {
     /*
 	SLLString str("Hello world!");
-	SLLString* newStr = new SLLString(); //added * and ()
+	SLLString newStr;
 
 	newStr = str;
-	newStr += SLLString( "CS@BC" );
+	newStr += SLLString("CS@BC");
 	newStr[6] = 'W';
 
 	std::cout << newStr << std::endl;			// Hello World! CS@BC
@@ -23,8 +23,11 @@ int main()
 
 	newStr.erase('C');
 	std::cout << newStr << std::endl;			// Heo Word! S@B
+
+	return 0;
      */
-    SLLString str("DeezNawtz");
+
+    SLLString str("hello");
     SLLString newStr;
     newStr = str;
 

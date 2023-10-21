@@ -26,7 +26,7 @@ class SLLString
      * @param other
      * @return
      */
-	SLLString& operator=(const SLLString& other) { //return and adress
+	SLLString& operator=(const SLLString& other) { //return an adress
         if (this == &other)
             return *this; //return
         clear();//this is the distinguishing line.
@@ -62,8 +62,16 @@ class SLLString
      * @param other
      * @return
      */
-	SLLString& operator+= (const SLLString& other){
-        m_pTail =
+	SLLString& operator+= (const SLLString& other); {
+        SLLString* list = other.m_pHead;
+        SLLString* temp = m_pTail;
+
+        while (list) {
+            Node* newNode = new Node();
+
+        }
+
+
     }
 	friend std::ostream& operator<<(std::ostream& os, const SLLString& other) {
         int index = 0;
@@ -78,6 +86,8 @@ class SLLString
 
 	// Get character at index n
 	char& operator[](const int n);
+
+
 
 	// Get the length of this string
 	int length() { return size; };
