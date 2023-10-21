@@ -62,14 +62,17 @@ class SLLString
      * @param other
      * @return
      */
-	SLLString& operator+= (const SLLString& other); {
-        SLLString* list = other.m_pHead;
-        SLLString* temp = m_pTail;
+	SLLString& operator+= (const SLLString& other) {
+        SLLString* list = new SLLString();
+        SLLString lhs = *this;
+        SLLString rhs = other;
+        lhs.m_pHead = m_pHead;
+        rhs.m_pHead = other.m_pHead;
 
-        while (list) {
-            Node* newNode = new Node();
+        list->m_pHead = lhs.m_pHead;
+        list->size = this->size + other.size;
 
-        }
+        return *list;
 
 
     }

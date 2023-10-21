@@ -27,9 +27,15 @@ int main()
 	return 0;
      */
 
-    SLLString str("hello");
+    SLLString str("deez");
     SLLString newStr;
     newStr = str;
+    std::cout << "&str: " << &str << std::endl;
+    std::cout << "&newStr: " << &newStr << std::endl;
+
+    std::cout << "str: " << str << std::endl;
+    std::cout << "newStr: " << newStr << std::endl;
+    //newStr += SLLString("nutz");
 
     std::cout << "&str: " << &str << std::endl;
     std::cout << "&newStr: " << &newStr << std::endl;
