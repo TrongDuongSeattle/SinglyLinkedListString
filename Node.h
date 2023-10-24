@@ -13,7 +13,7 @@ public:
     Node(){m_data = 0; m_next = 0;}
     Node(char data) { m_data = data; m_next = 0; }
     void setData(char data){  m_data = data; }
-    char getData() { return m_data; }
+    char& getData() { return m_data; }
     void setNext(Node* next) { m_next = next; }
     Node* getNext() { return m_next; } //
     //friend class SLLString;

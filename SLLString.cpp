@@ -44,7 +44,7 @@ SLLString::SLLString(const SLLString& other){
         //copy remaining nodes
         m_pTail = new Node(otherHead->getData());
         otherHead = otherHead->getNext(); // advancing pointer..
-        while (otherHead != 0) {
+        while (otherHead != nullptr) {
             // get next item from original chain
             // create a new node containing the next item
             Node* temp = new Node(otherHead->getData());
@@ -68,7 +68,16 @@ SLLString::SLLString(const SLLString& other){
 SLLString::~SLLString() {
     clear();
 }
+/**
+ *
+ * @param substring
+ * @return
+ */
+int findSubstring(const std::string substring){
+    int index = 0;
 
+    return -1;
+}
 //my fx's
 void SLLString::clear() {
     if (size != 0) {
@@ -80,8 +89,8 @@ void SLLString::clear() {
         }
     }
     size = 0;
-    m_pHead = 0;
-    m_pHead = 0;
+    m_pHead = nullptr;
+    m_pHead = nullptr;
 
 }
 /*

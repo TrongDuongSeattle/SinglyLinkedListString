@@ -34,7 +34,7 @@ class SLLString
         Node* otherHead = other.m_pHead;
         m_pHead = new Node(otherHead->getData()); //creating first node.
         m_pHead->setNext(otherHead->getNext()); //this is the head, mess with this and lose everything
-        m_pTail = otherHead;
+        m_pTail = m_pHead;
         //copy remaining nodes
         //Node* new_mpHead = new Node(); // temp pointer
         otherHead = otherHead->getNext(); // advancing pointer..
@@ -65,12 +65,11 @@ class SLLString
         this->size += other.size;
         Node* otherHead = other.m_pHead;
         while(otherHead != nullptr) {
-            //new Node(otherHead->getData());
+            //dnew Node(otherHead->getData());
             this->m_pTail->setNext(new Node(otherHead->getData())); //new node returns a node ptr, set next tkes a node ptr
 
             this->m_pTail = m_pTail->getNext();
             otherHead = otherHead->getNext();
-
         }
         return *this;
     }
@@ -86,7 +85,16 @@ class SLLString
     };
 
 	// Get character at index n
-	char& operator[](const int n);
+	char& operator[](const int n){
+        Node* temp = m_pHead;
+        for (int i = 0; n; i++) {
+            if (i == n) {
+                return temp->getData();
+            }
+            temp = temp->getNext();
+        }
+
+    }
 
 
 

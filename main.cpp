@@ -30,11 +30,13 @@ int main()
     SLLString str("deez");
     SLLString newStr;
     newStr = str;
-
     newStr += SLLString("nutz");
     std::cout << "&str: " << &str << std::endl;
     std::cout << "&newStr: " << &newStr << std::endl;
-
+    std::cout << "Calling newStr[6]: " << std::endl;
+    newStr[3] = 'W';
     std::cout << "str: " << str << std::endl;
     std::cout << "newStr: " << newStr << std::endl;
+
+
 }
