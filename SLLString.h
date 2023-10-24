@@ -26,18 +26,17 @@ class SLLString
      * @param other
      * @return
      */
-	SLLString& operator=(const SLLString& other) { //return an adress
+	SLLString& operator=(const SLLString& other) { //returns an adress
         if (this == &other)
-            return *this; //return
+            return *this;
         clear();//this is the distinguishing line.
-        //
         size = other.size;
         Node* otherHead = other.m_pHead;
         m_pHead = new Node(otherHead->getData()); //creating first node.
         m_pHead->setNext(otherHead->getNext()); //this is the head, mess with this and lose everything
-
+        m_pTail = otherHead;
         //copy remaining nodes
-        Node* new_m_pHead = m_pHead; // temp pointer
+        //Node* new_mpHead = new Node(); // temp pointer
         otherHead = otherHead->getNext(); // advancing pointer..
         while (otherHead != nullptr) {
             // get next item from original chain
@@ -47,10 +46,10 @@ class SLLString
             Node *newNodePtr = new Node(ch);
 
             // link new node to end of new chain
-            new_m_pHead->setNext(newNodePtr);
+            m_pTail->setNext(newNodePtr);
 
             // Advance ptrs
-            new_m_pHead = new_m_pHead->getNext();
+            m_pTail = m_pTail->getNext();
             otherHead = otherHead->getNext();
         }
         return *this;
@@ -61,19 +60,20 @@ class SLLString
      * get to the end, stick it on.
      * @param other
      * @return
-     *//*
-	SLLString& operator+= (const SLLString& other) {
-        SLLString* list = new SLLString();
-        SLLString lhs = *this;
-        SLLString rhs = other;
-        lhs.m_pHead = m_pHead;
-        rhs.m_pHead = other.m_pHead;
+     */
+	SLLString& operator+= (const SLLString& other) { //modifying current list
+        this->size += other.size;
+        Node* otherHead = other.m_pHead;
+        while(otherHead != nullptr) {
+            //new Node(otherHead->getData());
+            this->m_pTail->setNext(new Node(otherHead->getData())); //new node returns a node ptr, set next tkes a node ptr
 
-        list->m_pHead = lhs.m_pHead;
-        list->size = this->size + other.size;
+            this->m_pTail = m_pTail->getNext();
+            otherHead = otherHead->getNext();
 
-        return *list;
-    }*/
+        }
+        return *this;
+    }
 	friend std::ostream& operator<<(std::ostream& os, const SLLString& other) {
         int index = 0;
         Node* temp = other.m_pHead;

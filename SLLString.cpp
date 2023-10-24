@@ -25,37 +25,38 @@ SLLString::SLLString(const std::string& other){
 
 /**
  *Heavily inspired by textbook
+ *
+ * take the other pointers assign head and tail to other pointer
+ * then set other pointer to null..
  * Traverse, loop and duplicate: looplicate. Dupli-Loop.;
  * @param other
  */
 SLLString::SLLString(const SLLString& other){
     size = other.size;
-    Node* otherHead = other.m_pHead;
-    if (otherHead == 0)
-        m_pHead = 0;
+    //Node* otherHead = other.m_pHead;
+    if (other.m_pHead == nullptr)
+        m_pHead = nullptr;
     else {
-        //copying first node...
-        m_pHead = new Node(); //creating first node.
-        m_pHead->setNext(otherHead->getNext()); //this is the head, mess with this and lose everything
+        Node* otherHead = other.m_pHead;
+        m_pHead = m_pTail = otherHead; //creating first node.
+        //m_pTail->setNext(otherHead->getNext()); //this is the head, mess with this and lose everything
 
         //copy remaining nodes
-        Node* new_m_pHead = m_pHead; // temp pointer
+        m_pTail = new Node(otherHead->getData());
         otherHead = otherHead->getNext(); // advancing pointer..
         while (otherHead != 0) {
             // get next item from original chain
-            char ch = otherHead->getData();
-
             // create a new node containing the next item
-            Node *newNodePtr = new Node(ch);
+            Node* temp = new Node(otherHead->getData());
 
             // link new node to end of new chain
-            new_m_pHead->setNext(newNodePtr);
+            m_pTail->setNext(temp);
 
             // Advance ptrs
-            new_m_pHead = new_m_pHead->getNext();
+            m_pTail = m_pTail->getNext();
             otherHead = otherHead->getNext();
         }//end loop
-        new_m_pHead->setNext(0);
+        //m_pTail->setNext(0);
     }
 
 

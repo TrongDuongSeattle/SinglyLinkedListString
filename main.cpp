@@ -31,7 +31,7 @@ int main()
     SLLString newStr;
     newStr = str;
 
-
+    newStr += SLLString("nutz");
     std::cout << "&str: " << &str << std::endl;
     std::cout << "&newStr: " << &newStr << std::endl;
 
