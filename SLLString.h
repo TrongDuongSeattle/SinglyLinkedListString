@@ -109,7 +109,6 @@ class SLLString
     // iterate, erase
 	void erase(char c);
 
-    Node* copy();
     void clear();
 
 

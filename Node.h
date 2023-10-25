@@ -10,8 +10,8 @@ class Node {
 public:
 
 public:
-    Node(){m_data = 0; m_next = 0;}
-    Node(char data) { m_data = data; m_next = 0; }
+    Node(){m_data = 0; m_next = nullptr;}
+    Node(char data) { m_data = data; m_next = nullptr; }
     void setData(char data){  m_data = data; }
     char& getData() { return m_data; }
     void setNext(Node* next) { m_next = next; }

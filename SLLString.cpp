@@ -10,7 +10,6 @@ SLLString::SLLString(){
  * Copy Constructor
  * @param other
  */
-//
 SLLString::SLLString(const std::string& other){
     size = other.length();
     Node* temp = new Node(other[0]);
@@ -69,14 +68,62 @@ SLLString::~SLLString() {
     clear();
 }
 /**
- *
+ * once you have the data sorted, searching becomes trivial;
  * @param substring
  * @return
  */
-int findSubstring(const std::string substring){
+int SLLString::findSubstring(const std::string substring){
     int index = 0;
+    int count = 0;
+    Node* thisNode = m_pHead;
+    bool found = false;
 
+   while (!found && thisNode != nullptr) {
+       if (thisNode->getData() == substring[index]) {
+           index++;
+           if (index == substring.length()) {
+               found = true;
+           }
+       }
+       count++;
+       thisNode = thisNode->getNext();
+   }
+   if (found)
+       return count - index;
     return -1;
+}
+// Erase all occurrences of character c from the current string
+// iterate, erase
+void SLLString::erase(char c) {
+
+    Node* next = m_pHead;
+    Node* curr = m_pHead;
+
+    while (curr->getNext()->getNext() != nullptr) {
+        if (m_pHead->getData() == c) {
+            std::cout << "bogey at the start" << std::endl;
+            m_pHead = m_pHead->getNext();
+        }
+        if (curr->getNext()->getData() == c) {
+
+            std::cout << "I have eyes on target..." << std::endl;
+            std::cout << "Fox 2 away." << std::endl;
+
+            //Node* temp = curr->getNext();   //memory leak?
+            curr->setNext(curr->getNext()->getNext());
+            std::cout << "Splash down" << std::endl;
+        }
+        curr = curr->getNext();
+        //next = next->getNext();
+
+
+   }
+    if (m_pTail->getData() == c) {
+        std::cout << "bogey at the end" << std::endl;
+        m_pTail = curr;
+        m_pTail->setNext(nullptr);
+        return;
+    }
 }
 //my fx's
 void SLLString::clear() {
@@ -95,14 +142,6 @@ void SLLString::clear() {
 }
 /*
 
-
-
-
-SLLString& operator+= (const SLLString& other);
-
-
-// Get character at index n
-char& operator[](const int n);
 
 // Find the index of the first occurrence of substring in the current string.
 // Returns - 1 if not found
